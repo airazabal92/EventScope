@@ -25,6 +25,9 @@ function showPosition(position) {
   console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
   // Pass latitude and longitude to Google API
   getLocation();
+
+  // Send latitude & longitude to Ticketmaster API
+  ticketmaster();
 }
 
 // Get the city, state, and zip code using Google API
@@ -84,16 +87,22 @@ $("#restart").on("click", function () {
 // Connect to Ticketmaster API
 function ticketmaster() {
   var queryURL =
-    "https://app.ticketmaster.com/discovery/v2/events.json?apikey=BohCmDWTsx1AhwD0dRwXtPuIOvpk44t5&latlong=40.7732224,-74.1834752";
-
+    "https://app.ticketmaster.com/discovery/v2/events.json?apikey=BohCmDWTsx1AhwD0dRwXtPuIOvpk44t5&latlong=" + lat + "," + lon;
+    
   $.ajax({
     url: queryURL,
     method: "GET",
-  }).then(function (response) {
-    console.log(response)
+  }).then(function (responseTicketmaster) {
+    console.log(responseTicketmaster)
   });
 }
 
-ticketmaster();
+
+
+
+
+
+
+
 
 // Add Yelp API
