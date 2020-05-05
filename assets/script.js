@@ -5,6 +5,18 @@ var lon;
 var city;
 var state;
 var zipcode;
+var eventList;
+var eventName;
+var eventStartDate;
+var eventEndDate;
+var eventImageURL;
+var eventTime;
+var eventGenre;
+var eventPriceMin;
+var eventPriceMax;
+var eventVenue;
+var eventCity;
+var eventState;
 
 // First get the latitude an longitude of the user
 getLatLong();
@@ -94,7 +106,91 @@ function ticketmaster() {
     method: "GET",
   }).then(function (responseTicketmaster) {
     console.log(responseTicketmaster)
+    eventList = responseTicketmaster;
+    displayEvents();
   });
+}
+
+// Work on extracting relevant event info
+function displayEvents(){
+
+  for (var i = 0; i < 11; i++){
+
+    var newDiv = $("<div>");
+    newDiv.attr("id", i);
+    $("#eventHolder").append(newDiv);
+    newDiv.css({"padding": "20px", "border": "2px solid black"});
+    
+    // Event name
+  eventName = eventList._embedded.events[i].name;
+  console.log("LIST" + eventList);
+  var p1 = $("<p>").text("Name: " + eventName);
+  $("#" + i).append(p1);
+
+  // Start date
+  eventStartDate = eventList._embedded.events[i].dates.start.localDate;
+  console.log("START DATE" + eventStartDate);
+
+  var dateYear = eventStartDate.slice(0,4);
+  console.log("YEARRR " + dateYear);
+
+  var dateMonth = eventStartDate.slice(5,7);
+  console.log("MONTH " + dateMonth);
+
+  var dateDay = eventStartDate.slice(8,10);
+  console.log("DAY " + dateDay);
+
+  var dateFormatted = dateMonth + "-" + dateDay + "-" + dateYear;
+
+  var p2 = $("<p>").text("Date: " + dateFormatted);
+  $("#" + i).append(p2); 
+
+  // Image URL 
+  eventImageURL = eventList._embedded.events[i].images[9].url;
+  console.log("EVENT IMG URL: " + eventImageURL);
+
+  var newImg = $("<img>").attr("src", eventImageURL);
+  $("#" + i).append(newImg);
+
+
+  // Event time
+  eventTime = eventList._embedded.events[i].dates.start.localTime;
+  console.log("LOCAL TIME: " + eventTime);
+  var p3 = $("<p>").text("Time: " + eventTime);
+  $("#" + i).append(p3); 
+  //$("#eventHolder").html("<br/>");
+
+  // Event genre
+  eventGenre = eventList._embedded.events[i].classifications[0].genre.name;
+  console.log("GENRE: " + eventGenre);
+  var p4 = $("<p>").text("Genre: " + eventGenre);
+  $("#" + i).append(p4);
+
+  // Event price range
+  eventPriceMin = eventList._embedded.events[i].priceRanges[0].min;
+  console.log("MIN $" + eventPriceMin);
+  var p5 = $("<p>").text("Min Price: $" + eventPriceMin);
+  $("#" + i).append(p5);
+
+  eventPriceMax = eventList._embedded.events[i].priceRanges[0].max;
+  console.log("MAX $" + eventPriceMax);
+  var p6 = $("<p>").text("Max Price: $" + eventPriceMax);
+  $("#" + i).append(p6);
+
+  // Event address 
+  eventVenue = eventList._embedded.events[i]._embedded.venues[0].name;
+  eventCity = eventList._embedded.events[i]._embedded.venues[0].city.name;
+  eventState = eventList._embedded.events[i]._embedded.venues[0].state.stateCode;
+  console.log("ADDRESS: " + eventVenue + " " + eventCity + " " + eventState);
+  var p7 = $("<p>").text("Venue: " + eventVenue + " - " + eventCity + " , " + eventState);
+  $("#" + i).append(p7);
+
+
+  }
+  
+
+
+
 }
 
 
