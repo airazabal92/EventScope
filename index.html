@@ -1,114 +1,89 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hello Bulma!</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.2/css/bulma.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!--Import Google Icon Font-->
+   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- Compiled and minified CSS -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-    <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
-    <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script>
+   <!-- Compiled and minified JavaScript -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+           
+  <title>Website Test</title>
+</head>
+<body>
+  <div class="container">
+    <!--FIRST PAGE-->
+    <!-- Display current location-->
+    <div id="currentLocation"></div>
+     <!-- set var location to either geo window or what's inputted here
+      if we need to input new location, add field dynamically 
+      <div>Change location link</div> -->
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/style.css">
+      <!-- New location field to be added dynamically-->
 
-
-  </head>
-  <body>
-  <section class="section">
-    <div class="container">
-
-        <!--FIRST PAGE-->
-
-        <div id="firstPage">
-
-            <!-- Display current location-->
-            <div id="currentLocation"></div>
-
-            <!-- set var location to either geo window or what's inputted here
-            if we need to input new location, add field dynamically 
-            <div>Change location link</div>
-            New location field to be added dynamically
-            <div class="field">
-                <label class="label"></label>
-                <div class="control">
-                <input id="newLocation" class="input" type="text" placeholder="Text input">
-                </div>
-            </div> -->
-            
-            <!-- Budget - save in var budget in Javascript
-            Create a slider to be able to select the budget-->
-            <div class="field">
-                <label class="label">Enter your budget</label>
-                <div class="control has-icons-left has-icons-right">
-                <input id="currentBudget" class="input is-success" type="text" placeholder="Text input" value="bulma">
-                <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                </span>
-                <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                </span>
-                </div>
-                <p class="help is-success">This username is available</p>
-            </div>
-
-            <!-- Ask for interest based on Eventbrite categories create var interests (array) -->
-
-            <div> Interests </div>
-
-            <div id="activities" class="select is-multiple">
-                <select multiple size="8">
-                <option value="Argentina">Argentina</option>
-                <option value="Bolivia">Bolivia</option>
-                <option value="Brazil">Brazil</option>
-                <option value="Chile">Chile</option>
-                <option value="Colombia">Colombia</option>
-                <option value="Ecuador">Ecuador</option>
-                <option value="Guyana">Guyana</option>
-                <option value="Paraguay">Paraguay</option>
-                <option value="Peru">Peru</option>
-                <option value="Suriname">Suriname</option>
-                <option value="Uruguay">Uruguay</option>
-                <option value="Venezuela">Venezuela</option>
-                </select>
-            </div>
-
-            <!-- Select dates https://creativebulma.net/product/calendar/demo# -->
-
-            <div>
-                <span id="startDate">Start Date:</span><input type="date">
-                <span id="endDate">End Date:</span><input type="date">
-            </div>
-
-
-            <!-- Filter through activities once we get object from Eventbrite https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/-->
-
-            <button id="submitButton" class="button">Next</button>
-            <button id="clearButton" class="button">Clear</button>
-
+    <div class="row">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="textInput" type="text" class="validate">
+          <label for="textInput">Location of Interest:</label>
         </div>
+      </div>
+    </div>
 
-        
-        <!--SECOND PAGE-->
+    <!-- Budget - save in var budget in Javascript
+        Create a slider to be able to select the budget-->
+    <div class="row">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="currentBudget" type="text" class="validate">
+          <label for="currentBudget">Enter your Budget:</label>
+        </div>
+      </div>
+    </div>
+     <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
+    <div class="row">
+      <div class="input-field col s12">
+        <select multiple>
+          <option value="" disabled selected>Choose your option(s):</option>
+          <option value="1">Local Events</option>
+          <option value="2">Concerts</option>
+          <option value="3">Food & Drinks</option>
+        </select>
+        <label>Interests:</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s6">
+        <input type="text" id="date" class="datepicker">
+        <label for="date">Start Date:</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="text" id="date" class="datepicker">
+        <label for="date">End Date:</label>
+      </div>
+    </div>
+    <div class="row">
+      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+      <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+    </div>
+  </div>
+          <!--SECOND PAGE-->
 
         <!-- Display the events from eventbrite here using https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/ -->
 
-        <div id="eventFilter" class="invisible"> 
-
-            EVENTS
+          <div id="eventFilter"> 
 
             <!-- var selectedEvents to keep track of events 
                  check events selected against budget and display events that are in budget 
-
                  display event picture, description, and if possible register link 
             -->
 
             <!-- if food is selected in activities, then display restaurants within budget using Yelp API -->
-            <br>
-
-            <button id="eventsPreviousButton" class="button">Previous</button>
-            <button id="eventsNextButton" class="button">Next</button>
 
         </div>
 
@@ -116,18 +91,17 @@
 
         <!-- Add recap of events - display selected categories -->
 
-        <div id="recap" class="invisible">
-            <span>RECAP</span>
-            <br>
-            <button id="restart" class="button">Plan for another time</button>
-        </div>
-
     </div>
-  </section>
 
-  <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $('.datepicker').datepicker({});
+    M.updateTextFields();
+    $('select').formSelect();
+  });
+  </script>
   <script defer src="assets/script.js"></script>
-
-  </body>
+</body>
 </html>
