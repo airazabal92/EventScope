@@ -10,6 +10,10 @@
     <link href="~bulma-calendar/dist/css/bulma-calendar.min.css" rel="stylesheet">
     <script src="~bulma-calendar/dist/js/bulma-calendar.min.js"></script>
 
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/style.css">
+
+
   </head>
   <body>
   <section class="section">
@@ -17,78 +21,82 @@
 
         <!--FIRST PAGE-->
 
-        <!-- Display current location-->
-        <div id="currentLocation"></div>
+        <div id="firstPage">
 
-        <!-- set var location to either geo window or what's inputted here
-        if we need to input new location, add field dynamically 
-        <div>Change location link</div> -->
-        
- 
-        <!-- New location field to be added dynamically-->
-        <div class="field">
-            <label class="label"></label>
-            <div class="control">
-              <input id="newLocation" class="input" type="text" placeholder="Text input">
+            <!-- Display current location-->
+            <div id="currentLocation"></div>
+
+            <!-- set var location to either geo window or what's inputted here
+            if we need to input new location, add field dynamically 
+            <div>Change location link</div>
+            New location field to be added dynamically
+            <div class="field">
+                <label class="label"></label>
+                <div class="control">
+                <input id="newLocation" class="input" type="text" placeholder="Text input">
+                </div>
+            </div> -->
+            
+            <!-- Budget - save in var budget in Javascript
+            Create a slider to be able to select the budget-->
+            <div class="field">
+                <label class="label">Enter your budget</label>
+                <div class="control has-icons-left has-icons-right">
+                <input id="currentBudget" class="input is-success" type="text" placeholder="Text input" value="bulma">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+                </div>
+                <p class="help is-success">This username is available</p>
             </div>
-          </div>
 
-        <!-- Budget - save in var budget in Javascript
-        Create a slider to be able to select the budget-->
-          <div class="field">
-            <label class="label">Enter your budget</label>
-            <div class="control has-icons-left has-icons-right">
-              <input id="currentBudget" class="input is-success" type="text" placeholder="Text input" value="bulma">
-              <span class="icon is-small is-left">
-                <i class="fas fa-user"></i>
-              </span>
-              <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-              </span>
+            <!-- Ask for interest based on Eventbrite categories create var interests (array) -->
+
+            <div> Interests </div>
+
+            <div id="activities" class="select is-multiple">
+                <select multiple size="8">
+                <option value="Argentina">Argentina</option>
+                <option value="Bolivia">Bolivia</option>
+                <option value="Brazil">Brazil</option>
+                <option value="Chile">Chile</option>
+                <option value="Colombia">Colombia</option>
+                <option value="Ecuador">Ecuador</option>
+                <option value="Guyana">Guyana</option>
+                <option value="Paraguay">Paraguay</option>
+                <option value="Peru">Peru</option>
+                <option value="Suriname">Suriname</option>
+                <option value="Uruguay">Uruguay</option>
+                <option value="Venezuela">Venezuela</option>
+                </select>
             </div>
-            <p class="help is-success">This username is available</p>
-          </div>
 
-        <!-- Ask for interest based on Eventbrite categories create var interests (array) -->
+            <!-- Select dates https://creativebulma.net/product/calendar/demo# -->
 
-        <div> Interests </div>
+            <div>
+                <span id="startDate">Start Date:</span><input type="date">
+                <span id="endDate">End Date:</span><input type="date">
+            </div>
 
-        <div id="activities" class="select is-multiple">
-            <select multiple size="8">
-              <option value="Argentina">Argentina</option>
-              <option value="Bolivia">Bolivia</option>
-              <option value="Brazil">Brazil</option>
-              <option value="Chile">Chile</option>
-              <option value="Colombia">Colombia</option>
-              <option value="Ecuador">Ecuador</option>
-              <option value="Guyana">Guyana</option>
-              <option value="Paraguay">Paraguay</option>
-              <option value="Peru">Peru</option>
-              <option value="Suriname">Suriname</option>
-              <option value="Uruguay">Uruguay</option>
-              <option value="Venezuela">Venezuela</option>
-            </select>
+
+            <!-- Filter through activities once we get object from Eventbrite https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/-->
+
+            <button id="submitButton" class="button">Next</button>
+            <button id="clearButton" class="button">Clear</button>
+
         </div>
-
-        <!-- Select dates https://creativebulma.net/product/calendar/demo# -->
-
-        <div>
-            <span id="startDate">Start Date:</span><input type="date">
-            <span id="endDate">End Date:</span><input type="date">
-        </div>
-
-
-          <!-- Filter through activities once we get object from Eventbrite https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/-->
-
-          <button id="submitButton" class="button">Submit</button>
-          <button id="clearButton" class="button">Clear</button>
 
         
         <!--SECOND PAGE-->
 
         <!-- Display the events from eventbrite here using https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/ -->
 
-        <div id="eventFilter"> 
+        <div id="eventFilter" class="invisible"> 
+
+            EVENTS
 
             <!-- var selectedEvents to keep track of events 
                  check events selected against budget and display events that are in budget 
@@ -97,12 +105,22 @@
             -->
 
             <!-- if food is selected in activities, then display restaurants within budget using Yelp API -->
+            <br>
+
+            <button id="eventsPreviousButton" class="button">Previous</button>
+            <button id="eventsNextButton" class="button">Next</button>
 
         </div>
 
         <!-- THIRD PAGE -->
 
         <!-- Add recap of events - display selected categories -->
+
+        <div id="recap" class="invisible">
+            <span>RECAP</span>
+            <br>
+            <button id="restart" class="button">Plan for another time</button>
+        </div>
 
     </div>
   </section>
