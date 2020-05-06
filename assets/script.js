@@ -343,7 +343,7 @@ $(document).ready(function () {
       eventCity = eventList._embedded.events[i]._embedded.venues[0].city.name;
       eventState =
         eventList._embedded.events[i]._embedded.venues[0].state.stateCode;
-      console.log(
+        console.log(
         "ADDRESS: " + eventVenue + " " + eventCity + " " + eventState
       );
       var p7 = $("<p>").text(
