@@ -243,7 +243,7 @@ $(document).ready(function () {
       lat +
       "," +
       lon +
-      "&startDateTime=" + userStartYear + "-" + userStartMonth + "-" + userStartDay + "T20:58:00Z&endDateTime=" + userEndYear + "-" + userEndMonth + "-" + userEndDay + "T20:58:00Z";
+      "&startDateTime=" + userStartYear + "-" + userStartMonth + "-" + userStartDay + "T00:00:00Z&endDateTime=" + userEndYear + "-" + userEndMonth + "-" + userEndDay + "T23:59:00Z";
 
     $.ajax({
       url: queryURL,
@@ -255,7 +255,7 @@ $(document).ready(function () {
     });
   }
 
-  // Work on extracting relevant event info
+  // Work on extracting & displaying relevant event info
   function displayEvents() {
     for (var i = 0; i < 20; i++) {
       var newDiv = $("<div>");
