@@ -46,27 +46,27 @@
      <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
     <div class="row">
       <div class="input-field col s12">
-        <select multiple>
-          <option value="" disabled selected>Choose your option(s):</option>
-          <option value="1">Local Events</option>
-          <option value="2">Concerts</option>
-          <option value="3">Food & Drinks</option>
+        <select id="multipleSelect">
+          <option value="Concert">Concerts</option>
+          <option value="Sports">Sports</option>
+          <option value="Arts & Theater">Arts & Theater</option>
+          <option value="Family">Family</option>
         </select>
         <label>Interests:</label>
       </div>
     </div>
     <div class="row">
       <div class="input-field col s6">
-        <input type="text" id="date" class="datepicker">
+        <input type="text" id="startDate" class="datepicker">
         <label for="date">Start Date:</label>
       </div>
       <div class="input-field col s6">
-        <input type="text" id="date" class="datepicker">
+        <input type="text" id="endDate" class="datepicker">
         <label for="date">End Date:</label>
       </div>
     </div>
     <div class="row">
-      <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+      <button class="btn waves-effect waves-light" id=submitButton type="submit" name="action">Submit
         <i class="material-icons right">send</i>
       </button>
       <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
