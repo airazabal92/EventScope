@@ -40,6 +40,8 @@ $(document).ready(function () {
   var userEndYear;
   var userEndMonth;
 
+  var userBudget;
+
   /* FUNCTIONS / LOGIC
   ----------------------------------------------------------*/
 
@@ -124,7 +126,9 @@ $(document).ready(function () {
 
   submitButton.click(function () {
     //event.preventDefault();
-
+    // once submit is clicked the users Budget is stored in the var userBudget
+    userBudget = $("#currentBudget").val();
+    console.log(userBudget);
     var userStartDate = $("#startDate").val();
     var userEndDate = $("#endDate").val();
 
@@ -262,8 +266,11 @@ $(document).ready(function () {
       newDiv.attr("id", i);
       $("#eventHolder").append(newDiv);
       newDiv.css({ padding: "20px", border: "2px solid black" });
-
-      // Event name
+      
+      // conditional statement so if the users budget is greater than the min price of the event its info is displayed
+      if (userBudget >= eventList._embedded.events[i].priceRanges[0].min){
+      
+        // Event name
       eventName = eventList._embedded.events[i].name;
       console.log("LIST" + eventList);
       var p1 = $("<p>").text("Name: " + eventName);
@@ -312,6 +319,7 @@ $(document).ready(function () {
       console.log("MIN $" + eventPriceMin);
       var p5 = $("<p>").text("Min Price: $" + eventPriceMin);
       $("#" + i).append(p5);
+      
 
       eventPriceMax = eventList._embedded.events[i].priceRanges[0].max;
       console.log("MAX $" + eventPriceMax);
@@ -332,6 +340,6 @@ $(document).ready(function () {
       $("#" + i).append(p7);
     }
   }
-
+}
   // Add Yelp API
 });
