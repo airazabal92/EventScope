@@ -96,7 +96,7 @@ $(document).ready(function () {
   })
   
 
-})
+
 
   
 
@@ -353,5 +353,6 @@ $(document).ready(function () {
     }
   }
 }
+})
   // Add Yelp API
 
