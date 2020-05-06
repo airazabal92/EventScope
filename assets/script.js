@@ -16,6 +16,8 @@ $(document).ready(function () {
   var city;
   var state;
   var zipcode;
+  var className;
+  var masterClass;
 
   var eventList;
   var eventName;
@@ -229,6 +231,16 @@ $(document).ready(function () {
     //console.log("End Month Slice: " + userEndMonth);
     //console.log("Start Month Slice: " + userStartMonth);
 
+    // for (var i=0; i < className.length; i++){
+    //  if(i < className.length-2){
+    //   masterClass += className.length[i]+ ",";
+    //  }
+    //  else{
+    //   masterClass += className.length[i];
+    //  }
+    // }
+    className = $("#multipleSelect").val();
+    console.log(className);
 
     // Send latitude & longitude to Ticketmaster API
     ticketmaster();
@@ -241,7 +253,9 @@ $(document).ready(function () {
       lat +
       "," +
       lon +
-      "&startDateTime=" + userStartYear + "-" + userStartMonth + "-" + userStartDay + "T00:00:00Z&endDateTime=" + userEndYear + "-" + userEndMonth + "-" + userEndDay + "T23:59:00Z";
+
+      "&startDateTime=" + userStartYear + "-" + userStartMonth + "-" + userStartDay + "T20:58:00Z&endDateTime=" + userEndYear + "-" + userEndMonth + "-" + userEndDay + "T20:58:00Z" + "&classificationName=" +className;
+
 
     $.ajax({
       url: queryURL,
@@ -272,7 +286,7 @@ $(document).ready(function () {
       console.log("START DATE" + eventStartDate);
 
       var dateYear = eventStartDate.slice(0, 4);
-      console.log("YEARRR " + dateYear);
+      console.log("YEAR " + dateYear);
 
       var dateMonth = eventStartDate.slice(5, 7);
       console.log("MONTH " + dateMonth);
