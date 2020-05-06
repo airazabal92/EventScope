@@ -48,8 +48,8 @@ $(document).ready(function () {
   ----------------------------------------------------------*/
 
   // First get the latitude an longitude of the user
-  $("#getLocation").click(function(){
-     // Get the latitude and longitude using window object
+  $("#getLocation").click(function () {
+    // Get the latitude and longitude using window object
     // Make sure browser supports this feature
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition);
@@ -59,11 +59,13 @@ $(document).ready(function () {
     function showPosition(position) {
       lat = position.coords.latitude;
       lon = position.coords.longitude;
-      console.log("Your coordinates are Latitude: " + lat + " Longitude " + lon);
+      console.log(
+        "Your coordinates are Latitude: " + lat + " Longitude " + lon
+      );
       // Pass latitude and longitude to Google API
       getLocation();
     }
-  
+
     // Get the user's city, state, and zip code using Google API
     function getLocation() {
       var queryURL =
@@ -72,7 +74,7 @@ $(document).ready(function () {
         "," +
         lon +
         "&key=AIzaSyAXsZwTySX_Xsrq3PqkkSy8LiQ4iTnE5MA";
-  
+
       $.ajax({
         url: queryURL,
         method: "GET",
@@ -83,22 +85,17 @@ $(document).ready(function () {
         console.log(state);
         zipcode = response.results[0].address_components[7].long_name;
         console.log(zipcode);
-  
+
         // Now that all information is acquired, send it to be displayed on the front-end
         setLocation();
       });
-  
+
       // Add location to front-end
       function setLocation() {
         $("#currentLocation").text(city + ", " + state + " - " + zipcode);
       }
     }
-  })
-  
-
-
-
-  
+  });
 
   /* NEEDS TO BE UPDATED - NEW HTML 
   // On submit of first section, remove content and show content for second section
@@ -123,7 +120,6 @@ $(document).ready(function () {
   });
   */
 
-
   submitButton.click(function () {
     //event.preventDefault();
     // once submit is clicked the users Budget is stored in the var userBudget
@@ -133,102 +129,79 @@ $(document).ready(function () {
     var userEndDate = $("#endDate").val();
 
     // User start date
-    userStartDay = userStartDate.slice(4,6);
+    userStartDay = userStartDate.slice(4, 6);
     console.log("Start Day Slice: " + userStartDay);
 
-    userStartYear = userStartDate.slice(8,12);
+    userStartYear = userStartDate.slice(8, 12);
     console.log("Start Year Slice: " + userStartYear);
 
-    userStartMonth = userStartDate.slice(0,3);
+    userStartMonth = userStartDate.slice(0, 3);
     console.log("Start Month Before If: " + userStartMonth);
-    
 
     console.log("Start date " + userStartDate);
     console.log("End date: " + userEndDate);
 
     // User end date
-    userEndDay = userEndDate.slice(4,6);
+    userEndDay = userEndDate.slice(4, 6);
     console.log("Start Day Slice: " + userEndDay);
 
-    userEndYear = userEndDate.slice(8,12);
+    userEndYear = userEndDate.slice(8, 12);
     console.log("Start Year Slice: " + userEndYear);
 
-    userEndMonth = userEndDate.slice(0,3);
+    userEndMonth = userEndDate.slice(0, 3);
     console.log("End Month Before If: " + userEndMonth);
-   
+
     // Change the month word format to a number for ticketmaster API URL - for start month
-    if (userStartMonth == "Jan"){
+    if (userStartMonth == "Jan") {
       userStartMonth = "01";
-    } 
-    else if (userStartMonth == "Feb"){
+    } else if (userStartMonth == "Feb") {
       userStartMonth = "02";
-    }
-    else if (userStartMonth == "Mar"){
+    } else if (userStartMonth == "Mar") {
       userStartMonth = "03";
-    }
-    else if (userStartMonth == "Apr"){
+    } else if (userStartMonth == "Apr") {
       userStartMonth = "04";
-    }
-    else if (userStartMonth == "May"){
+    } else if (userStartMonth == "May") {
       userStartMonth = "05";
-    }
-    else if (userStartMonth == "Jun"){
+    } else if (userStartMonth == "Jun") {
       userStartMonth = "06";
-    }
-    else if (userStartMonth == "Jul"){
+    } else if (userStartMonth == "Jul") {
       userStartMonth = "07";
-    }
-    else if (userStartMonth == "Aug"){
+    } else if (userStartMonth == "Aug") {
       userStartMonth = "08";
-    }
-    else if (userStartMonth == "Sep"){
+    } else if (userStartMonth == "Sep") {
       userStartMonth = "09";
-    }
-    else if (userStartMonth == "Oct"){
+    } else if (userStartMonth == "Oct") {
       userStartMonth = "10";
-    }
-    else if (userStartMonth == "Nov"){
+    } else if (userStartMonth == "Nov") {
       userStartMonth = "11";
-    }
-    else {
+    } else {
       userStartMonth = "12";
     }
 
     // Change the month word format to a number for ticketmaster API URL - for end month
-    if (userEndMonth == "Jan"){
+    if (userEndMonth == "Jan") {
       userEndMonth = "01";
-    } 
-    else if (userEndMonth == "Feb"){
+    } else if (userEndMonth == "Feb") {
       userEndMonth = "02";
-    }
-    else if (userEndMonth == "Mar"){
+    } else if (userEndMonth == "Mar") {
       userEndMonth = "03";
-    }
-    else if (userEndMonth == "Apr"){
+    } else if (userEndMonth == "Apr") {
       userEndMonth = "04";
-    }
-    else if (userEndMonth == "May"){
+    } else if (userEndMonth == "May") {
       userEndMonth = "05";
-    }
-    else if (userEndMonth == "Jun"){
+    } else if (userEndMonth == "Jun") {
       userEndMonth = "06";
-    }
-    else if (userEndMonth == "Jul"){
+    } else if (userEndMonth == "Jul") {
       userEndMonth = "07";
-    }
-    else if (userEndMonth == "Aug"){
+    } else if (userEndMonth == "Aug") {
       userEndMonth = "08";
-    }
-    else if (userEndMonth == "Sep"){
+    } else if (userEndMonth == "Sep") {
       userEndMonth = "09";
-    }
-    else if (userEndMonth == "Oct"){
+    } else if (userEndMonth == "Oct") {
       userEndMonth = "10";
-    }
-    else if (userEndMonth == "Nov"){
+    } else if (userEndMonth == "Nov") {
       userEndMonth = "11";
-    }
-    else{
+    } else {
       userEndMonth = "12";
     }
 
@@ -257,9 +230,22 @@ $(document).ready(function () {
       lat +
       "," +
       lon +
-
-      "&startDateTime=" + userStartYear + "-" + userStartMonth + "-" + userStartDay + "T20:58:00Z&endDateTime=" + userEndYear + "-" + userEndMonth + "-" + userEndDay + "T20:58:00Z" + "&classificationName=" +className;
-
+      "&startDateTime=" +
+      userStartYear +
+      "-" +
+      userStartMonth +
+      "-" +
+      userStartDay +
+      "T20:58:00Z&endDateTime=" +
+      userEndYear +
+      "-" +
+      userEndMonth +
+      "-" +
+      userEndDay +
+      "T20:58:00Z" +
+      "&classificationName=" +
+      className;
+    console.log(queryURL);
 
     $.ajax({
       url: queryURL,
@@ -278,81 +264,93 @@ $(document).ready(function () {
       newDiv.attr("id", i);
       $("#eventHolder").append(newDiv);
       newDiv.css({ padding: "20px", border: "2px solid black" });
-      
+
       // conditional statement so if the users budget is greater than the min price of the event its info is displayed
-      if (userBudget >= eventList._embedded.events[i].priceRanges[0].min){
-      
+      console.log("loop index = " + i);
+      if (
+        eventList._embedded.events[i].hasOwnProperty("priceRanges") &&
+        userBudget >= eventList._embedded.events[i].priceRanges[0].min
+      ) {
         // Event name
-      eventName = eventList._embedded.events[i].name;
-      console.log("LIST" + eventList);
-      var p1 = $("<p>").text("Name: " + eventName);
-      $("#" + i).append(p1);
+        eventName = eventList._embedded.events[i].name;
+        console.log("LIST", eventList);
+        var p1 = $("<p>").text("Name: " + eventName);
+        $("#" + i).append(p1);
 
-      // Start date
-      eventStartDate = eventList._embedded.events[i].dates.start.localDate;
-      console.log("START DATE" + eventStartDate);
+        // Start date
+        eventStartDate = eventList._embedded.events[i].dates.start.localDate;
+        console.log("START DATE" + eventStartDate);
 
-      var dateYear = eventStartDate.slice(0, 4);
-      console.log("YEAR " + dateYear);
+        var dateYear = eventStartDate.slice(0, 4);
+        console.log("YEAR " + dateYear);
 
-      var dateMonth = eventStartDate.slice(5, 7);
-      console.log("MONTH " + dateMonth);
+        var dateMonth = eventStartDate.slice(5, 7);
+        console.log("MONTH " + dateMonth);
 
-      var dateDay = eventStartDate.slice(8, 10);
-      console.log("DAY " + dateDay);
+        var dateDay = eventStartDate.slice(8, 10);
+        console.log("DAY " + dateDay);
 
-      var dateFormatted = dateMonth + "-" + dateDay + "-" + dateYear;
+        var dateFormatted = dateMonth + "-" + dateDay + "-" + dateYear;
 
-      var p2 = $("<p>").text("Date: " + dateFormatted);
-      $("#" + i).append(p2);
+        var p2 = $("<p>").text("Date: " + dateFormatted);
+        $("#" + i).append(p2);
 
-      // Image URL
-      eventImageURL = eventList._embedded.events[i].images[9].url;
-      console.log("EVENT IMG URL: " + eventImageURL);
+        // Image URL
+        eventImageURL = eventList._embedded.events[i].images[9].url;
+        console.log("EVENT IMG URL: " + eventImageURL);
 
-      var newImg = $("<img>").attr("src", eventImageURL);
-      $("#" + i).append(newImg);
+        var newImg = $("<img>").attr("src", eventImageURL);
+        $("#" + i).append(newImg);
 
-      // Event time
-      eventTime = eventList._embedded.events[i].dates.start.localTime;
-      console.log("LOCAL TIME: " + eventTime);
-      var p3 = $("<p>").text("Time: " + eventTime);
-      $("#" + i).append(p3);
-      //$("#eventHolder").html("<br/>");
+        // Event time
+        eventTime = eventList._embedded.events[i].dates.start.localTime;
+        console.log("LOCAL TIME: " + eventTime);
+        var p3 = $("<p>").text("Time: " + eventTime);
+        $("#" + i).append(p3);
+        //$("#eventHolder").html("<br/>");
 
-      // Event genre
-      eventGenre = eventList._embedded.events[i].classifications[0].genre.name;
-      console.log("GENRE: " + eventGenre);
-      var p4 = $("<p>").text("Genre: " + eventGenre);
-      $("#" + i).append(p4);
+        // Event genre
+        eventGenre =
+          eventList._embedded.events[i].classifications[0].genre.name;
+        console.log("GENRE: " + eventGenre);
+        var p4 = $("<p>").text("Genre: " + eventGenre);
+        $("#" + i).append(p4);
 
-      // Event price range
-      eventPriceMin = eventList._embedded.events[i].priceRanges[0].min;
-      console.log("MIN $" + eventPriceMin);
-      var p5 = $("<p>").text("Min Price: $" + eventPriceMin);
-      $("#" + i).append(p5);
-      
+        // Event price range
+        eventPriceMin = eventList._embedded.events[i].priceRanges[0].min;
+        console.log("MIN $" + eventPriceMin);
+        var p5 = $("<p>").text("Min Price: $" + eventPriceMin);
+        $("#" + i).append(p5);
 
-      eventPriceMax = eventList._embedded.events[i].priceRanges[0].max;
-      console.log("MAX $" + eventPriceMax);
-      var p6 = $("<p>").text("Max Price: $" + eventPriceMax);
-      $("#" + i).append(p6);
+        eventPriceMax = eventList._embedded.events[i].priceRanges[0].max;
+        console.log("MAX $" + eventPriceMax);
+        var p6 = $("<p>").text("Max Price: $" + eventPriceMax);
+        $("#" + i).append(p6);
 
-      // Event address
-      eventVenue = eventList._embedded.events[i]._embedded.venues[0].name;
-      eventCity = eventList._embedded.events[i]._embedded.venues[0].city.name;
-      eventState =
-        eventList._embedded.events[i]._embedded.venues[0].state.stateCode;
-        console.log(
-        "ADDRESS: " + eventVenue + " " + eventCity + " " + eventState
-      );
-      var p7 = $("<p>").text(
-        "Venue: " + eventVenue + " - " + eventCity + " , " + eventState
-      );
-      $("#" + i).append(p7);
+        // Event address
+        if (eventList._embedded.events[i]._embedded.hasOwnProperty("venues")) {
+          eventVenue = eventList._embedded.events[i]._embedded.venues[0].name;
+          eventCity =
+            eventList._embedded.events[i]._embedded.venues[0].city.name;
+          if (
+            eventList._embedded.events[i]._embedded.venues[0].state
+              .stateCode !== undefined
+          ) {
+            eventState =
+              eventList._embedded.events[i]._embedded.venues[0].state.stateCode;
+          } else {
+            eventState = "";
+          }
+          console.log(
+            "ADDRESS: " + eventVenue + " " + eventCity + " " + eventState
+          );
+        }
+        var p7 = $("<p>").text(
+          "Venue: " + eventVenue + " - " + eventCity + " , " + eventState
+        );
+        $("#" + i).append(p7);
+      }
     }
   }
-}
-})
-  // Add Yelp API
-
+});
+// Add Yelp API
