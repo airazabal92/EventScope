@@ -22,7 +22,6 @@ $(document).ready(function () {
   var eventList;
   var eventName;
   var eventStartDate;
-  var eventEndDate;
   var eventImageURL;
   var eventTime;
   var eventGenre;
@@ -97,31 +96,7 @@ $(document).ready(function () {
     }
   });
 
-  /* NEEDS TO BE UPDATED - NEW HTML 
-  // On submit of first section, remove content and show content for second section
-  $("#submitButton").on("click", function () {
-    $("#eventFilter").removeClass("invisible").addClass("visible");
-    $("#firstPage").addClass("invisible");
-  });
-  // When user clicks the previous button in the event list page, go back to first page
-  $("#eventsPreviousButton").on("click", function () {
-    $("#eventFilter").removeClass("visible").addClass("invisible");
-    $("#firstPage").removeClass("invisible").addClass("visible");
-  });
-  // When user clicks the next button in events page, remove event content and display recap
-  $("#eventsNextButton").on("click", function () {
-    $("#eventFilter").removeClass("visible").addClass("invisible");
-    $("#recap").removeClass("invisible").addClass("visible");
-  });
-  // If user wants to restart process, display the first section
-  $("#restart").on("click", function () {
-    $("#firstPage").removeClass("invisible").addClass("visible");
-    $("#recap").removeClass("visible").addClass("invisible");
-  });
-  */
-
   submitButton.click(function () {
-    //event.preventDefault();
     // once submit is clicked the users Budget is stored in the var userBudget
     userBudget = $("#currentBudget").val();
     console.log(userBudget);
@@ -266,11 +241,6 @@ $(document).ready(function () {
 
     // For loop exit condiction modified to check both event array length and max number of events to be processed
     for (var i = 0; i < numEvents && i < maxEvents; i++) {
-      var newDiv = $("<div>");
-      newDiv.attr("id", i);
-      $("#eventHolder").append(newDiv);
-      newDiv.css({ padding: "20px", border: "2px solid black" });
-
       // conditional statement so if the users budget is greater than the min price of the event its info is displayed
       console.log("loop index = " + i);
       if (
@@ -280,8 +250,6 @@ $(document).ready(function () {
         // Event name
         eventName = eventList._embedded.events[i].name;
         console.log("LIST", eventList);
-        var p1 = $("<p>").text("Name: " + eventName);
-        $("#" + i).append(p1);
 
         // Start date
         eventStartDate = eventList._embedded.events[i].dates.start.localDate;
@@ -305,33 +273,21 @@ $(document).ready(function () {
         eventImageURL = eventList._embedded.events[i].images[9].url;
         console.log("EVENT IMG URL: " + eventImageURL);
 
-        var newImg = $("<img>").attr("src", eventImageURL);
-        $("#" + i).append(newImg);
-
         // Event time
         eventTime = eventList._embedded.events[i].dates.start.localTime;
         console.log("LOCAL TIME: " + eventTime);
-        var p3 = $("<p>").text("Time: " + eventTime);
-        $("#" + i).append(p3);
-        //$("#eventHolder").html("<br/>");
 
         // Event genre
         eventGenre =
           eventList._embedded.events[i].classifications[0].genre.name;
         console.log("GENRE: " + eventGenre);
-        var p4 = $("<p>").text("Genre: " + eventGenre);
-        $("#" + i).append(p4);
 
         // Event price range
         eventPriceMin = eventList._embedded.events[i].priceRanges[0].min;
         console.log("MIN $" + eventPriceMin);
-        var p5 = $("<p>").text("Min Price: $" + eventPriceMin);
-        $("#" + i).append(p5);
 
         eventPriceMax = eventList._embedded.events[i].priceRanges[0].max;
         console.log("MAX $" + eventPriceMax);
-        var p6 = $("<p>").text("Max Price: $" + eventPriceMax);
-        $("#" + i).append(p6);
 
         // Event address
         if (eventList._embedded.events[i]._embedded.hasOwnProperty("venues")) {
@@ -355,11 +311,100 @@ $(document).ready(function () {
           }
           console.log(`ADDRESS: ${eventVenue} ${eventCity} ${eventState}`);
         }
-        var p7 = $("<p>").text(
-          "Venue: " + eventVenue + " - " + eventCity + " , " + eventState
-        );
-        $("#" + i).append(p7);
+
+        // Event info
+        eventInfo = eventList._embedded.events[i].info;
+
+        if (eventInfo == undefined) {
+          eventInfo = "";
+        } else {
+          eventInfo = "Info: " + eventList._embedded.events[i].info;
+        }
+
+        // Event sign up link
+        eventSignUpLink = eventList._embedded.events[i].url;
       }
+
+      var newCardDiv = $("<div>");
+      //newCardDiv.attr("id", "cardDiv" + i);
+      newCardDiv.addClass("card");
+      $("#eventHolder").append(newCardDiv);
+
+      var newCardImgDiv = $("<div>");
+      var cardImgDivId = "cardImgDiv" + i;
+      newCardDiv.attr("id", cardImgDivId);
+      newCardImgDiv.addClass("card-image waves-effect waves-block waves-light");
+      newCardDiv.append(newCardImgDiv);
+
+      var newImg = $("<img>");
+      newImg.attr("src", eventImageURL);
+      newImg.css("width", "100%");
+      $("#" + cardImgDivId).append(newImg);
+
+      var newCardContent = $("<div>");
+      var newCardContentId = "cardContent" + i;
+      newCardContent.attr("id", newCardContentId);
+      newCardContent.addClass("card-content");
+      newCardDiv.append(newCardContent);
+
+      var newCardTitle = $("<span>");
+      var newCardTitleId = "newCardTitle" + i;
+      newCardTitle.attr("id", newCardTitleId);
+      newCardTitle.addClass("card-title activator grey-text text-darken-4");
+      newCardTitle.text(eventName); // EVENT NAME
+      $("#" + newCardContentId).append(newCardTitle);
+
+      var newDateP = $("<p>");
+      var newDateId = "newDateP" + i;
+      newDateP.attr("id", newDateId);
+      newDateP.text(dateFormatted); // EVENT DATE
+      newCardContent.append(newDateP);
+
+      var newPriceP = $("<p>");
+      var newPricePId = "newPriceP" + i;
+      newPriceP.attr("id", newPricePId);
+      newPriceP.text(eventPriceMin); // EVENT MIN PRICE
+      newCardContent.append("Starting at $" + eventPriceMin);
+
+      var newCardIcons = $("<i>");
+      newCardIcons.addClass("material-icons right");
+      newCardIcons.text("more_vert");
+      newCardTitle.append(newCardIcons);
+
+      var newRevealDiv = $("<div>");
+      var newRevealDivId = "newRevealDiv" + i;
+      newRevealDiv.attr("id", newRevealDivId);
+      newRevealDiv.addClass("card-reveal");
+      newCardDiv.append(newRevealDiv);
+
+      var newSpanTitle = $("<span>");
+      var newSpanTitleId = "newSpanTitle" + i;
+      newSpanTitle.attr("id", newSpanTitleId);
+      newSpanTitle.addClass("card-title grey-text text-darken-4");
+      newSpanTitle.text(eventName); // EVENT NAME AGAIN
+      $("#" + newRevealDivId).append(newSpanTitle);
+
+      var newIconsRight = $("<i>");
+      newIconsRight.addClass("material-icons right");
+      newIconsRight.text("close");
+      newSpanTitle.append(newIconsRight);
+
+      var newEventInfoP = $("<p>");
+      var newEventInfoPId = "newEventInfo" + i;
+      newEventInfoP.attr("id", newEventInfoPId);
+      newEventInfoP.text(eventInfo); // EVENT INFO
+      $("#" + newRevealDivId).append(newEventInfoP);
+
+      var newEventButton = $("<button>");
+      var newEventButtonId = "newEventButton" + i;
+      newEventButton.attr("id", newEventButtonId);
+      newEventButton.attr(
+        "onclick",
+        "window.open('" + eventSignUpLink + "', '_blank');"
+      ); // EVENT SIGN UP
+      //newEventButton.attr("target", "_blank");
+      newEventButton.text("Register");
+      $("#" + newRevealDivId).append(newEventButton);
     }
   }
 });
