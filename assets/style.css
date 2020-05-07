@@ -1,7 +1,7 @@
-.visible{
-    visibility: visible;
+.brand-logo {
+  margin-left: 30px;
 }
 
-.invisible{
-    visibility: hidden;
+.navColor {
+  background-color: #25a69a;
 }
