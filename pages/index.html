@@ -1,139 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script
-      defer
-      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
-    ></script>
-    <!--Import Google Icon Font-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
-    <!-- Compiled and minified CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
-    />
 
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <title>Website Test</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
 
-  <body>
-    <nav>
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <a href="#" data-target="mobile-demo" class="sidenav-trigger"
-          ><i class="material-icons">menu</i></a
-        >
-        <ul class="right hide-on-med-and-down">
-          <li><a href="home.html">Home</a></li>
-          <li><a href="index.html">Get Started</a></li>
-          <li><a href="meetUs.html">Meet the Team</a></li>
-        </ul>
-      </div>
-    </nav>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <ul class="sidenav" id="mobile-demo">
-      <li><a href="home.html">Home</a></li>
-      <li><a href="index.html">Get Started</a></li>
-      <li><a href="meetUs.html">Meet the Team</a></li>
-    </ul>
-    <br />
-    <div class="container">
-      <div class="box">
-        <!--FIRST PAGE-->
-        <!-- Display current location-->
+  <link href="../assets/style.css" rel="stylesheet">
 
-        <!-- set var location to either geo window or what's inputted here
+  <title>EventScope</title>
+
+</head>
+
+<body>
+  <nav>
+    <div class="nav-wrapper navColor">
+      <a href="#!" class="brand-logo">EventScope</a>
+      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="home.html">Home</a></li>
+        <li><a href="index.html">Get Started</a></li>
+        <li><a href="meetUs.html">Meet the Team</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <ul class="sidenav" id="mobile-demo">
+    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Get Started</a></li>
+    <li><a href="meetUs.html">Meet the Team</a></li>
+  </ul>
+  <br />
+  <div class="container">
+    <div class="box">
+      <!--FIRST PAGE-->
+      <!-- Display current location-->
+
+      <!-- set var location to either geo window or what's inputted here
           if we need to input new location, add field dynamically 
           <div>Change location link</div> -->
 
-        <!-- New location field to be added dynamically-->
+      <!-- New location field to be added dynamically-->
 
+      <div class="row">
         <div class="row">
-          <div class="row">
-            <div class="input-field col s10">
-              <h5 id="currentLocation"></h5>
-            </div>
-            <a
-              id="getLocation"
-              class="waves-effect waves-light btn-small col s2"
-              >Current Location</a
-            >
+          <div class="input-field col s10">
+            <h5 id="currentLocation"></h5>
+            <hr>
           </div>
-        </div>
-
-        <!-- Budget - save in var budget in Javascript
-            Create a slider to be able to select the budget-->
-        <div class="row">
-          <div class="row">
-            <div class="input-field col s12">
-              <input id="currentBudget" type="text" class="validate" />
-              <label for="currentBudget">Enter your Budget:</label>
-            </div>
-          </div>
-        </div>
-        <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
-        <div class="row">
-          <div class="input-field col s12">
-            <select id="multipleSelect">
-              <option value="Concert">Concerts</option>
-              <option value="Sports">Sports</option>
-              <option value="Arts & Theater">Arts & Theater</option>
-              <option value="Family">Family</option>
-            </select>
-            <label>Interests:</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s6">
-            <input type="text" id="startDate" class="datepicker" />
-            <label for="date">Start Date:</label>
-          </div>
-          <div class="input-field col s6">
-            <input type="text" id="endDate" class="datepicker" />
-            <label for="date">End Date:</label>
-          </div>
-        </div>
-        <div class="row">
-          <button
-            class="btn waves-effect waves-light"
-            id="submitButton"
-            type="submit"
-            name="action"
-          >
-            Submit
-
-            <i class="material-icons right">send</i>
-          </button>
-          <button class="waves-effect waves-light btn" id="clearButton">
-            <i class="material-icons right">cloud</i>Clear
-          </button>
+          <a id="getLocation" class="waves-effect waves-light btn-small col s2">Current Location</a>
         </div>
       </div>
 
-      <!-- ROW FOR EVENT CARDS -->
-
+      <!-- Budget - save in var budget in Javascript
+            Create a slider to be able to select the budget-->
       <div class="row">
-        <div id="eventHolder" class="col s12 m7"></div>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="currentBudget" type="text" class="validate" />
+            <label for="currentBudget">Enter your Budget:</label>
+          </div>
+        </div>
+      </div>
+      <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
+      <div class="row">
+        <div class="input-field col s12">
+          <select id="multipleSelect">
+            <option value="Concert">Concerts</option>
+            <option value="Sports">Sports</option>
+            <option value="Arts & Theater">Arts & Theater</option>
+            <option value="Family">Family</option>
+          </select>
+          <label>Interests:</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input type="text" id="startDate" class="datepicker" />
+          <label for="date">Start Date:</label>
+        </div>
+        <div class="input-field col s6">
+          <input type="text" id="endDate" class="datepicker" />
+          <label for="date">End Date:</label>
+        </div>
+      </div>
+      <div class="row">
+        <button class="btn waves-effect waves-light" id="submitButton" type="submit" name="action">
+          Submit
+
+          <i class="material-icons right">send</i>
+        </button>
+        <button class="waves-effect waves-light btn" id="clearButton">
+          <i class="material-icons right">cloud</i>Clear
+        </button>
       </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $(".datepicker").datepicker({});
-        M.updateTextFields();
-        $("select").formSelect();
-        $(".sidenav").sidenav();
-      });
-    </script>
-    <script src="../assets/script.js"></script>
-  </body>
+    <!-- ROW FOR EVENT CARDS -->
+
+    <div class="row">
+      <div id="eventHolder" class="col s12 m7"></div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".datepicker").datepicker({});
+      M.updateTextFields();
+      $("select").formSelect();
+      $(".sidenav").sidenav();
+    });
+  </script>
+  <script src="../assets/script.js"></script>
+</body>
+
 </html>
