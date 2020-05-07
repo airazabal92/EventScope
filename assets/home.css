@@ -37,7 +37,7 @@ body {
 .btn {
   border-radius: 20px;
   font-family: " Oswald", sans-serif;
-  color: khaki;
+  color: white;
   font-size: 200%;
   font: bold;
   padding: 10px 20px;
@@ -49,10 +49,12 @@ body {
   color: #ffff;
   border: solid red 3px;
 }
-.p {
-  font-size: 100%;
+p {
+  font-size: 150%;
+  font: bolder;
+  color: white;
   line-height: 210%;
-  text-align: justify;
+  text-align: center;
   margin: 3%;
   font-family: sans-serif;
 }
