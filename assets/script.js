@@ -259,7 +259,13 @@ $(document).ready(function () {
 
   // Work on extracting & displaying relevant event info
   function displayEvents() {
-    for (var i = 0; i < 20; i++) {
+    // Number of event array items from api response
+    var numEvents = eventList._embedded.events.length;
+    // Max number of events to be processed
+    var maxEvents = 20;
+
+    // For loop exit condiction modified to check both event array length and max number of events to be processed
+    for (var i = 0; i < numEvents && i < maxEvents; i++) {
       var newDiv = $("<div>");
       newDiv.attr("id", i);
       $("#eventHolder").append(newDiv);
@@ -332,18 +338,22 @@ $(document).ready(function () {
           eventVenue = eventList._embedded.events[i]._embedded.venues[0].name;
           eventCity =
             eventList._embedded.events[i]._embedded.venues[0].city.name;
+
+          // Some events do not have state property so it needs to be checked befor stateCode
           if (
-            eventList._embedded.events[i]._embedded.venues[0].state
-              .stateCode !== undefined
+            eventList._embedded.events[i]._embedded.venues[0].hasOwnProperty(
+              "state"
+            ) &&
+            eventList._embedded.events[
+              i
+            ]._embedded.venues[0].state.hasOwnProperty("stateCode")
           ) {
             eventState =
               eventList._embedded.events[i]._embedded.venues[0].state.stateCode;
           } else {
             eventState = "";
           }
-          console.log(
-            "ADDRESS: " + eventVenue + " " + eventCity + " " + eventState
-          );
+          console.log(`ADDRESS: ${eventVenue} ${eventCity} ${eventState}`);
         }
         var p7 = $("<p>").text(
           "Venue: " + eventVenue + " - " + eventCity + " , " + eventState
