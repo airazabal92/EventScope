@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <!--Import Google Icon Font-->
-   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-   <!-- Compiled and minified CSS -->
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-   <!-- Compiled and minified JavaScript -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-           
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <link href="assets/style.css">
+
   <title>Website Test</title>
 </head>
+
 <body>
   <div class="container">
     <!--FIRST PAGE-->
     <!-- Display current location-->
     <div id="currentLocation"></div>
-     <!-- set var location to either geo window or what's inputted here
+    <!-- set var location to either geo window or what's inputted here
       if we need to input new location, add field dynamically 
       <div>Change location link</div> -->
 
-      <!-- New location field to be added dynamically-->
+    <!-- New location field to be added dynamically-->
 
     <div class="row">
       <div class="row">
@@ -30,7 +34,7 @@
           <input id="textInput" type="text" class="validate">
           <label for="textInput">Location of Interest:</label>
         </div>
-        <a  id="getLocation" class="waves-effect waves-light btn-small col s2">Current Location</a>
+        <a id="getLocation" class="waves-effect waves-light btn-small col s2">Current Location</a>
       </div>
     </div>
 
@@ -44,7 +48,7 @@
         </div>
       </div>
     </div>
-     <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
+    <!-- Ask for interest based on Ticketmaster categories create var interests (array) -->
     <div class="row">
       <div class="input-field col s12">
         <select id="multipleSelect">
@@ -72,39 +76,57 @@
 
         <i class="material-icons right">send</i>
       </button>
-      <a class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+      <a href="events.html" class="waves-effect waves-light btn"><i class="material-icons right">cloud</i>button</a>
+
+
     </div>
+
+    <div class="row">
+
+      <div id="eventHolder" class="col s12 m7">
+
+
+
+      </div>
+
+
+    </div>
+
+
+
+
   </div>
-          <!--SECOND PAGE-->
+  <!--SECOND PAGE-->
 
-        <!-- Display the events from eventbrite here using https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/ -->
+  <!-- Display the events from eventbrite here using https://www.sitepoint.com/building-a-filtering-component-with-css-animations-jquery/ -->
 
-          <div id="eventFilter"> 
+  <div id="eventFilter">
 
-            <!-- var selectedEvents to keep track of events 
+    <!-- var selectedEvents to keep track of events 
                  check events selected against budget and display events that are in budget 
                  display event picture, description, and if possible register link 
             -->
 
-            <!-- if food is selected in activities, then display restaurants within budget using Yelp API -->
+    <!-- if food is selected in activities, then display restaurants within budget using Yelp API -->
 
-        </div>
+  </div>
 
-        <!-- THIRD PAGE -->
+  <!-- THIRD PAGE -->
 
-        <!-- Add recap of events - display selected categories -->
+  <!-- Add recap of events - display selected categories -->
 
-    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script>
-  $(document).ready(function(){
-    $('.datepicker').datepicker({});
-    M.updateTextFields();
-    $('select').formSelect();
-  });
+    $(document).ready(function () {
+      $('.datepicker').datepicker({});
+      M.updateTextFields();
+      $('select').formSelect();
+    });
   </script>
   <script defer src="assets/script.js"></script>
 </body>
+
 </html>
