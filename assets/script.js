@@ -32,6 +32,7 @@ $(document).ready(function () {
   var eventState;
 
   var submitButton = $("#submitButton");
+  var clearButton = $("#clearButton");
 
   var userStartDay;
   var userStartYear;
@@ -196,6 +197,13 @@ $(document).ready(function () {
 
     // Send latitude & longitude to Ticketmaster API
     ticketmaster();
+  });
+
+  clearButton.click(function () {
+    $("#currentBudget").val("");
+    $("#startDate").val("");
+    $("#endDate").val("");
+    $("#eventHolder").empty();
   });
 
   // Connect to Ticketmaster API
