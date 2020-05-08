@@ -30,9 +30,3 @@ The Google API is the API that was used to determine location.
 Once the submit button is selected, an additional API call is then made to Ticketmaster to retrieve events taking place during the date and budget user selected, in the destination city that they provided.
 
 [GitHub Page](https://airazabal92.github.io/project-1/)
-
-![Homepage screenshot](https://files.slack.com/files-pri/T01135ME6TB-F013N4B3C8H/image.png)
-
-![Start page screenshot](https://files.slack.com/files-pri/T01135ME6TB-F012UP1Q7LP/image__1_.png)
-
-![About the team](https://files.slack.com/files-pri/T01135ME6TB-F0132PAUAQN/image__2_.png)
