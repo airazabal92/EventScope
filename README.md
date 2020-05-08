@@ -1,4 +1,4 @@
-# project-1
+# EventScope
 
 Team Members:
 
@@ -28,3 +28,11 @@ The goal of the project was to create a website that will find local events by b
 The Google API is the API that was used to determine location.
 
 Once the submit button is selected, an additional API call is then made to Ticketmaster to retrieve events taking place during the date and budget user selected, in the destination city that they provided.
+
+<a href="https://airazabal92.github.io/project-1/"></a>
+
+![](https://files.slack.com/files-pri/T01135ME6TB-F013N4B3C8H/image.png)
+
+![](https://files.slack.com/files-pri/T01135ME6TB-F012UP1Q7LP/image__1_.png)
+
+![](https://files.slack.com/files-pri/T01135ME6TB-F0132PAUAQN/image__2_.png)
