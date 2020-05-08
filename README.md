@@ -1,27 +1,27 @@
 # EventScope
 
-Team Members:
+### Team Members:
 
-Amanda Irazabal
-Jonathan Kwan
-Prince Ogechi Achu
-John Michael Romano
-Bremini Santhalingam
+- Amanda Irazabal
+- Jonathan Kwan
+- Prince Ogechi Achu
+- John Michael Romano
+- Bremini Santhalingam
 
-Technologies Used:
+### Technologies Used:
 
-HTML
-CSS
-JavaScript
-jQuery
-AJAX
+- HTML
+- CSS
+- JavaScript
+- jQuery
+- AJAX
 
-API Reference:
+### API Reference:
 
-Google API
-Ticketmaster API
+- Google API
+- Ticketmaster API
 
-Project Summary:
+### Project Summary:
 
 The goal of the project was to create a website that will find local events by budget from the user's origin, to their destination, as well as finding events in the area of their destination.
 
@@ -29,10 +29,10 @@ The Google API is the API that was used to determine location.
 
 Once the submit button is selected, an additional API call is then made to Ticketmaster to retrieve events taking place during the date and budget user selected, in the destination city that they provided.
 
-<a href="https://airazabal92.github.io/project-1/"></a>
+[GitHub Page](https://airazabal92.github.io/project-1/)
 
-![](https://files.slack.com/files-pri/T01135ME6TB-F013N4B3C8H/image.png)
+![Homepage screenshot](https://files.slack.com/files-pri/T01135ME6TB-F013N4B3C8H/image.png)
 
-![](https://files.slack.com/files-pri/T01135ME6TB-F012UP1Q7LP/image__1_.png)
+![Start page screenshot](https://files.slack.com/files-pri/T01135ME6TB-F012UP1Q7LP/image__1_.png)
 
-![](https://files.slack.com/files-pri/T01135ME6TB-F0132PAUAQN/image__2_.png)
+![About the team](https://files.slack.com/files-pri/T01135ME6TB-F0132PAUAQN/image__2_.png)
