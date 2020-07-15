@@ -39,3 +39,16 @@ To view the deployed application on Heroku, visit:
 
 - Google API
 - Ticketmaster API
+<<<<<<< HEAD
+=======
+
+### Project Summary:
+
+The goal of the project was to create a website that will find local events by budget from the user's origin, to their destination, as well as finding events in the area of their destination.
+
+The Google API is the API that was used to determine location.
+
+Once the submit button is selected, an additional API call is then made to Ticketmaster to retrieve events taking place during the date and budget user selected, in the destination city that they provided.
+
+[GitHub Page](https://airazabal92.github.io/project-1/)
+>>>>>>> ea2ac62bd3a45ee6d465870f0ba6a2f3adca864f
