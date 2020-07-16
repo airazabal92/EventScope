@@ -14,7 +14,7 @@ Once the submit button is selected, an additional API call is then made to Ticke
 
 ## Application
 
-To view the deployed application on Heroku, visit:
+To view the deployed application, visit:
 <a href=https://airazabal92.github.io/EventScope/ target="_blank"> https://airazabal92.github.io/EventScope/</a>
 
 ## Team Members
